@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" action="{{ url_for('success') }}">
+    {{ form.hidden_tag() }}
+    {{ form.url }}
+    <button type="submit">Search</button>
+</form>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+            <div role="alert" class="alert alert-{{ category }} fade show" id="flash"
+                 style="width: auto;margin-top:20px;display: inline-block">
+                <span>{{ message }}</span></div>{% endfor %}
+    {% endif %}
+{% endwith %}
+
+</body>
+</html>
